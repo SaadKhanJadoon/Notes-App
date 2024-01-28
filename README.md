@@ -1,10 +1,10 @@
-# Note App
+# Notes App
 
 An elegant notes taking app for Android & iOS built in flutter that uses sqflite for storage.
 
 
 ## About
-Note app is a flutter application used to store data locally using SQFlite. I have performed simple CRUD Operations on Notes using SQFLITE. It will be good reference for one searching how to work with Sqflite in flutter and saving data locally.
+Notes app is a flutter application used to store data locally using sqflite. I have performed simple CRUD Operations on Notes using sqflite. It will be good reference for one searching how to work with sqflite in flutter and saving data locally.
 
 
 ## Demo
@@ -19,9 +19,8 @@ https://github.com/SaadKhanJadoon/Notes-App/assets/61506756/9340def5-b639-478f-b
 ## Built with:
 
 - GetX
-- SQFlite
+- sqflite
 - MVC Pattern
-
 
 ## Features
 
