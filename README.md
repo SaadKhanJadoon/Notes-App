@@ -48,8 +48,8 @@ https://github.com/SaadKhanJadoon/Notes-App/assets/61506756/9340def5-b639-478f-b
 
 Contributions are always welcome!
 
-&nbsp;1. Fork the Project.  
-&nbsp;2. Create your Feature Branch (git checkout -b feature/AmazingFeature).  
-&nbsp;3. Commit your Changes (git commit -m 'Add some AmazingFeature').  
-&nbsp;4. Push to the Branch (git push origin feature/AmazingFeature).  
+&nbsp;1. Fork this Project.  
+&nbsp;2. Create your Feature Branch (git checkout -b feature/amazing-feature)  
+&nbsp;3. Commit your Changes (git commit -m 'Add some Amazing Feature')  
+&nbsp;4. Push to the Branch (git push origin feature/amazing-feature)  
 &nbsp;5. Open a Pull Request.
