@@ -28,6 +28,8 @@ https://github.com/SaadKhanJadoon/Notes-App/assets/61506756/9340def5-b639-478f-b
 - Update note
 - Delete note
 - Delete all note
+- Favorite note
+- Search Functionality
 - Last update of note
 - Date time created of note
 
