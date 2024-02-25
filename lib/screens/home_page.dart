@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:notes_app/routing/app_routes.dart';
-import 'package:notes_app/widgets/Search.dart';
+import 'package:notes_app/screens/search_screen.dart';
 
 import '../constants/colors.dart';
 import '../controller/note_controller.dart';

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../constants/colors.dart';
 import '../controller/note_controller.dart';
-import '../screens/note_detail_page.dart';
+import 'note_detail_page.dart';
 
 class Search extends SearchDelegate {
   final NoteController controller = Get.find<NoteController>();
