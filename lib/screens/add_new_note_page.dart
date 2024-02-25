@@ -41,7 +41,6 @@ class AddNewNotePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 cursorColor: Colors.black,
-                enableInteractiveSelection: false,
                 decoration: const InputDecoration(
                   hintText: "Title",
                   hintStyle: TextStyle(
@@ -51,6 +50,7 @@ class AddNewNotePage extends StatelessWidget {
                   ),
                   border: InputBorder.none,
                 ),
+                autofocus: true,
               ),
               TextField(
                 style: const TextStyle(
@@ -66,7 +66,6 @@ class AddNewNotePage extends StatelessWidget {
                   border: InputBorder.none,
                 ),
                 cursorColor: Colors.black,
-                enableInteractiveSelection: false,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),

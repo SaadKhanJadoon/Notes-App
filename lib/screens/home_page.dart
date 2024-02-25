@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:notes_app/routing/app_routes.dart';
+import 'package:notes_app/widgets/Search.dart';
 
 import '../constants/colors.dart';
 import '../controller/note_controller.dart';
@@ -18,14 +19,21 @@ class HomePage extends StatelessWidget {
           "Flutter Notes App",
           style: TextStyle(
             color: Colors.black,
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
           ),
         ),
         backgroundColor: Colors.white,
-        centerTitle: true,
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: Search());
+            },
+          ),
           PopupMenuButton(
             onSelected: (val) {
               if (val == 0) {
@@ -96,7 +104,7 @@ class HomePage extends StatelessWidget {
           left: 10,
         ),
         child: ListView.builder(
-          shrinkWrap: true,
+          shrinkWrap: false,
           itemCount: controller.notes.length,
           itemBuilder: (context, index) {
             return GestureDetector(
@@ -130,37 +138,56 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding: const EdgeInsets.all(15),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
-                      Text(
-                        controller.notes[index].title!,
-                        style: const TextStyle(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                            color: AppColor.textColor),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              controller.notes[index].title!,
+                              style: const TextStyle(
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColor.textColor),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              controller.notes[index].content!,
+                              style: const TextStyle(
+                                  fontSize: 18, color: AppColor.textColor),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              controller.notes[index].dateTimeEdited!,
+                              style: const TextStyle(
+                                  fontSize: 14, color: AppColor.textColor),
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        width: 20,
                       ),
-                      Text(
-                        controller.notes[index].content!,
-                        style: const TextStyle(
-                            fontSize: 18, color: AppColor.textColor),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        controller.notes[index].dateTimeEdited!,
-                        style: const TextStyle(
-                            fontSize: 14, color: AppColor.textColor),
-                      ),
+                      InkWell(
+                        onTap: () {
+                          controller.favoriteNote(controller.notes[index].id!);
+                        },
+                        child: Icon(
+                          controller.notes[index].isFavorite == true
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                        ),
+                      )
                     ],
                   ),
                 ),

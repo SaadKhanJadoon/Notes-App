@@ -4,13 +4,15 @@ class Note {
   String? content;
   String? dateTimeEdited;
   String? dateTimeCreated;
+  bool? isFavorite;
 
   Note(
       {this.id,
       this.title,
       this.content,
       this.dateTimeEdited,
-      this.dateTimeCreated});
+      this.dateTimeCreated,
+      this.isFavorite});
 
   Map<String, dynamic> toJson() {
     return {
@@ -19,6 +21,7 @@ class Note {
       "content": content,
       "dateTimeEdited": dateTimeEdited,
       "dateTimeCreated": dateTimeCreated,
+      "isFavorite": isFavorite
     };
   }
 }

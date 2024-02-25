@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:notes_app/model/note_model.dart';
 import 'package:share/share.dart';
 
 import '../database_helper/database_helper.dart';
-import '../model/Note_model.dart';
 import '../routing/app_routes.dart';
 
 class NoteController extends GetxController {
   final titleController = TextEditingController();
   final contentController = TextEditingController();
 
-  var notes = <Note>[];
+  var notes = <Note>[].obs;
 
   @override
   void onInit() {
@@ -20,11 +20,7 @@ class NoteController extends GetxController {
   }
 
   bool isEmpty() {
-    if (notes.isEmpty) {
-      return true;
-    } else {
-      return false;
-    }
+    return notes.isEmpty;
   }
 
   void addNoteToDatabase() async {
@@ -35,8 +31,7 @@ class NoteController extends GetxController {
       content: content,
       dateTimeEdited: DateFormat("dd-MM-yyyy hh:mm a").format(DateTime.now()),
       dateTimeCreated: DateFormat("dd-MM-yyyy hh:mm a").format(DateTime.now()),
-    );
-
+        isFavorite: false);
     await DatabaseHelper.instance.addNote(note);
     titleController.text = "";
     contentController.text = "";
@@ -69,13 +64,24 @@ class NoteController extends GetxController {
     getAllNotes();
   }
 
+  void favoriteNote(int id) async {
+    Note note = notes.firstWhere((note) => note.id == id);
+    if (note.isFavorite == true) {
+      note.isFavorite = false; // Mark as not favorite
+    } else {
+      note.isFavorite = true; // Mark as favorite
+    }
+    await DatabaseHelper.instance.updateNote(note);
+    getAllNotes();
+  }
+
   void deleteAllNotes() async {
     await DatabaseHelper.instance.deleteAllNotes();
     getAllNotes();
   }
 
   void getAllNotes() async {
-    notes = await DatabaseHelper.instance.getNoteList();
+    notes.value = await DatabaseHelper.instance.getNoteList();
     update();
   }
 

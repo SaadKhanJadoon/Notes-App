@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:notes_app/model/note_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-
-import '../model/Note_model.dart';
 
 class DatabaseHelper {
   DatabaseHelper._privateConstructor();
@@ -34,7 +33,8 @@ class DatabaseHelper {
         title TEXT NOT NULL,
         content TEXT NOT NULL,
         dateTimeEdited TEXT NOT NULL,
-        dateTimeCreated TEXT NOT NULL
+        dateTimeCreated TEXT NOT NULL,
+        isFavorite INTEGER NOT NULL DEFAULT 0
       )
       ''');
   }
@@ -84,6 +84,7 @@ class DatabaseHelper {
           content: maps[index]["content"],
           dateTimeEdited: maps[index]["dateTimeEdited"],
           dateTimeCreated: maps[index]["dateTimeCreated"],
+          isFavorite: maps[index]["isFavorite"] == 1 ? true : false,
         );
       },
     );
